@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quick Note - simple full-stack note taking app" />
+  <title>Quick Note</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <div>
+        <span class="badge">FULL-STACK CRUD</span>
+        <h1>Quick Note</h1>
+        <p>Capture your thoughts quickly. Your notes are saved through a REST API.</p>
+      </div>
+      <div class="count-card">
+        <span id="noteCount">0</span>
+        <small>Notes</small>
+      </div>
+    </header>
+
+    <section class="composer card">
+      <div class="section-heading">
+        <h2>New note</h2>
+        <span id="status" aria-live="polite"></span>
+      </div>
+
+      <form id="noteForm">
+        <label for="title">Title</label>
+        <input
+          id="title"
+          name="title"
+          type="text"
+          maxlength="120"
+          placeholder="e.g. Project ideas"
+          required
+        />
+
+        <label for="content">Note</label>
+        <textarea
+          id="content"
+          name="content"
+          rows="5"
+          maxlength="5000"
+          placeholder="Write something..."
+          required
+        ></textarea>
+
+        <button id="saveButton" type="submit">
+          <span>＋</span> Add Note
+        </button>
+      </form>
+    </section>
+
+    <section class="notes-section">
+      <div class="section-heading">
+        <h2>Your notes</h2>
+        <button id="refreshButton" class="ghost-button" type="button">Refresh</button>
+      </div>
+      <div id="notes" class="notes-grid"></div>
+      <div id="emptyState" class="empty card">
+        <div class="empty-icon">✦</div>
+        <h3>No notes yet</h3>
+        <p>Create your first note above.</p>
+      </div>
+    </section>
+  </main>
+
+  <template id="noteTemplate">
+    <article class="note-card">
+      <div class="note-top">
+        <h3 class="note-title"></h3>
+        <button class="delete-button" type="button" aria-label="Delete note">×</button>
+      </div>
+      <p class="note-content"></p>
+      <time class="note-date"></time>
+    </article>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>
